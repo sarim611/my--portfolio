@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    .container {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+    }
+    
+    input {
+        margin: 10px;
+        padding: 10px;
+        width: 250px;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    #result {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+    
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discount Calculator</h1>
+        <input type="number" id="price-input" placeholder="Enter original price" />
+        <button id="calculate-button">Calculate Final Price</button>
+        <div id="result" class="hidden"></div>
+    </div>
+    <script >
+        // Event listener for the calculate button
+document.getElementById('calculate-button').addEventListener('click', () => {
+    // Get the price input value
+    const price = parseFloat(document.getElementById('price-input').value);
+    
+    // Validate input
+    if (isNaN(price)) {
+        alert("Please enter a valid number.");
+        return;
+    }
+
+    // Declare a discount percentage
+    const discountPercentage = 15;
+
+    // Calculate the final price
+    const discountAmount = (price * discountPercentage) / 100;
+    const finalPrice = price - discountAmount;
+
+    // Display the result
+    document.getElementById('result').textContent = `Final Price after ${discountPercentage}% discount: $${finalPrice.toFixed(2)}`;
+    document.getElementById('result').classList.remove('hidden');
+});
+
+    </script>
+</body>
+</html>

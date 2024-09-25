@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Object Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #user-info, #updated-info {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+        <h1>User Object Update</h1>
+        <div>
+            <input type="text" id="name-input" placeholder="Enter your name" />
+            <input type="email" id="email-input" placeholder="Enter your email" />
+            <input type="number" id="age-input" placeholder="Enter your age" />
+        </div>
+        <button id="create-button">Create User</button>
+        <div id="user-info" class="hidden"></div>
+        <h2>Update User Information</h2>
+        <input type="email" id="new-email-input" placeholder="Update email" />
+        <input type="number" id="new-age-input" placeholder="Update age" />
+        <button id="update-button">Update User</button>
+        <div id="updated-info" class="hidden"></div>
+    </div>
+    <script> 
+        let user = {}; // Initialize an empty user object
+
+document.getElementById('create-button').addEventListener('click', () => {
+    // Get user inputs
+    const name = document.getElementById('name-input').value;
+    const email = document.getElementById('email-input').value;
+    const age = parseInt(document.getElementById('age-input').value);
+
+    // Create the user object
+    user = { name, email, age };
+
+    // Display the user object
+    document.getElementById('user-info').textContent = JSON.stringify(user, null, 2);
+    document.getElementById('user-info').classList.remove('hidden');
+});
+
+document.getElementById('update-button').addEventListener('click', () => {
+    // Update the user object
+    const newEmail = document.getElementById('new-email-input').value;
+    const newAge = parseInt(document.getElementById('new-age-input').value);
+
+    if (newEmail) user.email = newEmail; // Update email if provided
+    if (!isNaN(newAge)) user.age = newAge; // Update age if provided
+
+    // Display the updated user object
+    document.getElementById('updated-info').textContent = JSON.stringify(user, null, 2);
+    document.getElementById('updated-info').classList.remove('hidden');
+});
+
+    </script>
+</body>
+</html>

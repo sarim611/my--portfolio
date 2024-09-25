@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celsius to Fahrenheit Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        #convert-button{
+            background-color: green;
+            padding: 10px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Celsius to Fahrenheit Converter</h1>
+        <input type="number" id="celsius-input" placeholder="Enter temperature in Celsius" />
+        <button id="convert-button">Convert to Fahrenheit</button>
+        <div id="result" class="hidden"></div>
+    </div>
+    <script >
+        // Function to convert Celsius to Fahrenheit
+function convertToFahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32;
+}
+
+// Event listener for the conversion button
+document.getElementById('convert-button').addEventListener('click', () => {
+    // Get the Celsius input value
+    const celsius = parseFloat(document.getElementById('celsius-input').value);
+
+    // Validate input
+    if (isNaN(celsius)) {
+        alert("Please enter a valid number.");
+        return;
+    }
+
+    // Convert to Fahrenheit
+    const fahrenheit = convertToFahrenheit(celsius);
+
+    // Display the result
+    document.getElementById('result').textContent = `Temperature in Fahrenheit: ${fahrenheit.toFixed(2)} °F`;
+    document.getElementById('result').classList.remove('hidden');
+});
+
+
+    </script>
+</body>
+</html>
